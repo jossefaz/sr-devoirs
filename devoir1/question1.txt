@@ -30,4 +30,10 @@ ls : commande pour lister toute l'arborescence du repertoire donne
 
 Question 4 : Donner une commande qui affiche le nom et le numéro de tous les groupes définis dans le fichier /etc/group 
 
-Question 5 : Donner une commande qui affiche le nombre de groupes définis dans le fichier /etc/group Question 6 : Donner une commande qui affiche le nombre de groupes dont le nom commence par "L3" définis dans le fichier /etc/group Question 7 : Donner une commande qui écrit dans le fichier fichProprio, la liste des fichiers dont vous êtes propiétaire (sur la machine virtuelle, utilisateur user) sur le système. Utilisation de la commande find avec redirection des erreurs sur un fichier. Question 8 : Donner une commande qui affiche les dix premiers noms de fichiers contenu dans le fichier fichProprio trié par ordre alphabétique inverse. Ces dix noms sont en fait les dix derniers noms du fichier origine mais triés par ordre inverse !
+Question 5 : Donner une commande qui affiche le nombre de groupes définis dans le fichier /etc/group 
+
+Question 6 : Donner une commande qui affiche le nombre de groupes dont le nom commence par "L3" définis dans le fichier /etc/group 
+
+Question 7 : Donner une commande qui écrit dans le fichier fichProprio, la liste des fichiers dont vous êtes propiétaire (sur la machine virtuelle, utilisateur user) sur le système. Utilisation de la commande find avec redirection des erreurs sur un fichier. 
+
+Question 8 : Donner une commande qui affiche les dix premiers noms de fichiers contenu dans le fichier fichProprio trié par ordre alphabétique inverse. Ces dix noms sont en fait les dix derniers noms du fichier origine mais triés par ordre inverse !
