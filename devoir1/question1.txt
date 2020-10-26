@@ -1,0 +1,33 @@
+Question 1 : Donner une commande qui copie tous les fichiers dont le nom commence par "Fich" du répertoire d’accueil de l’utilisateur Durand dans le répertoire courant. 
+
+cp ~Durand/Fich* .
+
+cp : commade copier
+~ : repertoir d'acceuil
+Durand : Nom de l'utilisateur
+/ : Entrer dans le repertoire 
+Fich* : selectionner tous les fichier commencant par Fich (l'etoile -wildcard- indique que le nom du fichier accept ensuite tous les caractere possible)
+. : repertoire courant
+
+Question 2 : Donner une commade qui affiche la liste des répertoires dans lequel le shell cherche les commandes à exécuter. 
+
+echo $PATH
+
+echo : commande d'affichage
+$: fait appel a une variable d'environement
+PATH : nom de la variable special qui regroupe la liste de tous les repertoires ou le shell recherche des executables
+
+Question 3 : Donner une commande qui stocke dans la variable listeFich les noms des fichiers du répertoire courant qui ont l’exention "tex". 
+
+listeFich=$(ls *.tex)
+
+listeFich : nom de la variable
+= : signe d'affectation
+$() : execute la command entre parenthese et renvoie sa sortie standard (stdout) 
+ls : commande pour lister toute l'arborescence du repertoire donne
+*.tex : patterne de recherche ou * signifie "tous les caracteres" suivis obligatoirement et exactement de ".tex" 
+
+
+Question 4 : Donner une commande qui affiche le nom et le numéro de tous les groupes définis dans le fichier /etc/group 
+
+Question 5 : Donner une commande qui affiche le nombre de groupes définis dans le fichier /etc/group Question 6 : Donner une commande qui affiche le nombre de groupes dont le nom commence par "L3" définis dans le fichier /etc/group Question 7 : Donner une commande qui écrit dans le fichier fichProprio, la liste des fichiers dont vous êtes propiétaire (sur la machine virtuelle, utilisateur user) sur le système. Utilisation de la commande find avec redirection des erreurs sur un fichier. Question 8 : Donner une commande qui affiche les dix premiers noms de fichiers contenu dans le fichier fichProprio trié par ordre alphabétique inverse. Ces dix noms sont en fait les dix derniers noms du fichier origine mais triés par ordre inverse !
