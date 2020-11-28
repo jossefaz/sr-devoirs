@@ -19,21 +19,65 @@ PATH : nom de la variable special qui regroupe la liste de tous les repertoires 
 
 Question 3 : Donner une commande qui stocke dans la variable listeFich les noms des fichiers du répertoire courant qui ont l’exention "tex". 
 
-listeFich=$(ls *.tex)
+listFich=$(ls -p | grep -v / | grep '\.tex$')
+
 
 listeFich : nom de la variable
 = : signe d'affectation
 $() : execute la command entre parenthese et renvoie sa sortie standard (stdout) 
-ls : commande pour lister toute l'arborescence du repertoire donne
-*.tex : patterne de recherche ou * signifie "tous les caracteres" suivis obligatoirement et exactement de ".tex" 
+ls : commande pour lister toute l'arborescence du repertoire donne. Comme nous n'indiquons pas de répertoire en particulier, cette commande liste le répertoire courant par defaut.
+-p : cette option rajoute un indicateur "/" pour tous les repertoires (ainsi nous pourront filtrer ces derniers afin de ne garder que les fichiers)
+| : le "pipe" transfert la sortie (stdout) de la commande (ici "ls -p") en tant qu'entrée (stdin) de la commande suivante
+grep / : commande effectuant une recherche texte d'expression reguliere et renvoie les differents matchs en sortie. Ici on recherche toutes les occurences comprenant le caractere '/'.
+-v : inverse le resultat de la recherche (donc tout ce qui ne comprend pas '/' autrement dit uniquement les fichiers).
+grep : a nouveau, on va rechercher selon la sotrie de la commande précédente (le grep précédent)
+'\.tex$' : expression reguliere qui recherche toutes les occurence '.tex' (l'antislash echape le point "." qui est un caractere special en expression reguliere) qui finissent un mot (ici les noms des fichiers). le $ indique la fin du mot donc on admet que les lettres précédentes représente l'extension du fichier.
 
 
 Question 4 : Donner une commande qui affiche le nom et le numéro de tous les groupes définis dans le fichier /etc/group 
 
+awk -F: '{print  $1 " : "  $3}' /etc/group
+
+awk : "Aho, Weinberger, and Kernighan", commande comme grep, qui va manipuler un texte donné en entrée (ici on lui passe comme dernier argument un fichier qui sert donc d'entrée a awk). Elle va notamment permettre de définir un séparateur selon lequel decouper le texte (une des inombrables fonctions de cette commande).
+-F: : si l'on observe la facon dont la liste des groupes est ogranisée dans /etc/group on remarque qu'un groupe est composé de la facon suivante  
+                                    nom_du_groupe:password_du_group:id_du_groupe:membres_du_groupe
+     on comprend que le ":" est un separateur entre les differents elements définissant le groupe. L'option -F permet selon le manuel de la commande awk de definir un separateur selon lequel le fichier sera lu.
+     Ainsi nous pourrons acceder aux differents elements de la liste en appelant l'element à l'aide de "$ + numero de l'element". Par exemple $1 va recuperer le premier élément à savoir le nom du groupe
+'{print  $1 " : "  $3}' : patterne selon lequel la commande awk doit traiter le texte en entrée (stdin) pour produire la sortie (stdout). ici on demande a awk d'imprimer le premier element à savoir le nom du groupe, puis d'imprimer un ":" et enfin le 3eme element à savoir le numéro du groupe.
+/etc/group : le fichier qui contient la liste de tous les groupes et de leurs numeros
+
+
 Question 5 : Donner une commande qui affiche le nombre de groupes définis dans le fichier /etc/group 
+
+awk 'END {print NR}' /etc/group
+
+awk : comme grep, ainsi qu'expliqué à la commmande précédente. Elle pemet de manipuler et chercher dans le texte en entrée, ici on lui passe /etc/group comme fichier en entrée
+'END {print NR}' : "print NR", imprime une variable speciale "NR" qui est en fait un compteur (number of records), et est incrémenté à chaque traitement. Pour la première ligne elle vaut 1; la seconde 2...etc. Ici on attend donc que awk termine le traitement (que l'ensemble du fichier soit lu). On utilise pour cela le mot clé END qui indique la fin de ce traitement (le debut etant BEGIN).
+
+On aurait pu utiliser la commande "wc -l < /etc/group". Mais elle présente quelques inconveniant et peut parfois sortir un compte éroné. Nous l'utliserons cependant a la commande suivante
+
 
 Question 6 : Donner une commande qui affiche le nombre de groupes dont le nom commence par "L3" définis dans le fichier /etc/group 
 
+grep '^L3' /etc/group | wc -l  
+
+grep : expliqué précédement.
+'^L3' : expression reguliere qui séléctionne tous les mots commencant par L3 on obtient ainsi en sortie l'ensemble des groupes dont le nom commence par L3
+/etc/group : on passe le nom du fichier qui sert comme entrée (stdin) à grep
+| : fait passer la sortie de grep (stdout) à la commande suivante en entrée (stdin)
+wc -l : commande qui permet de compter les nouvelles lignes, les mots pour un fichier donné. l'option -l compte les lignes (autrement dit le nombre de groupe puisque grep a imprimé une nouvelle ligne pour chaque groupe, respectant le format du fichier /etc/group qui lui meme octroie une nouvelle ligne à chaque groupe)
+
+
 Question 7 : Donner une commande qui écrit dans le fichier fichProprio, la liste des fichiers dont vous êtes propiétaire (sur la machine virtuelle, utilisateur user) sur le système. Utilisation de la commande find avec redirection des erreurs sur un fichier. 
+
+find / -type f -group ${USER} > fichProprio 2> erreurs
+
+find : commande de recherche
+/ : repertoire ou debuter la recherche. Puisque l'on souhaite effectuer la recherche dans tout le système nous la commencons donc à la racine '/'. 
+-type f: nous précisons le type des éléments recherchés à savoir des fichiers (f ou file).
+-group ${USER}: précise le nom du groupe propriétaire du fichier. Ici on utilise la variable spéciale USER qui est prédéfinie et contient le nom de l'utilisateur courrant.
+> fichProprio : redirige le flux de sortie (stdout) vers le fichier fichProprio
+2> erreurs : redirige le flux d'erreur vers un fichier nommé "erreur"
+
 
 Question 8 : Donner une commande qui affiche les dix premiers noms de fichiers contenu dans le fichier fichProprio trié par ordre alphabétique inverse. Ces dix noms sont en fait les dix derniers noms du fichier origine mais triés par ordre inverse !
