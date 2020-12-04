@@ -1,0 +1,66 @@
+Exercice 2 : Droits d’accès
+
+Question 1 : Un utilisateur du groupe etudiants peut-il modifier le script exo1.sh ?
+
+Les droits d'accès à exo1.sh sont les suivants -rwxrwxrwx. 
+Le second triplet des permissions est : 'rwx' à savoir 'read write execute' (lire ecrire/modifier executer). 
+Ce second triplet nous indique les droits du groupe propriétaire du fichier
+Le groupe propriétaire de ce fichier étant "etudiants", les membres de ce groupe peuvent donc tout à fait modifier ce fichier (l'acces "w" -ecriture- le permet)
+Si l'on observer l'arborescence du repertoire courant, on s'aperçoit que le repertoire parent a pour droits d'acces drwx--x--x. 
+Et le repertoire courant : drwx--xr-x. 
+Les deux ocrtroient un droit d'exploration (x du second triplet) a la fois pour le repertoire courant et parent au groupe propriétaire.
+Cela nous confirme que le groupe "etudiants" peut explorer ce répértoire et donc a accès au fichier exo1.sh pour le modifier.
+
+
+
+Question 2 : Que peut-faire et ne pas faire un utilisateur quelconque avec le script exo2.sh ?
+
+Les droits d'accès à exo2.sh sont les suivants -rwx--x--x
+Le dernier triplet en partant de la gauche est celui qui concèrnent les droits d'accès octroyé au 'reste' des utilisateurs (à savoir ceux qui ne sont ni propriétaire ni appartenant au groupe propriétaire).
+Ce groupe ne comprend que la permission d'execution ("x") à ce fichier.
+On pourait penser que l'utilisateur quelconque puisse executer ce fichier.
+Si l'on observer l'arborescence du repertoire courant, on s'aperçoit que le repertoire parent a pour droits d'acces drwx--x--x. 
+Et le repertoire courant : drwx--xr-x. 
+le dernier "x" en partant de la gauche (des deux repertoires, courrant et parent) nous confirme que l'utilisateur quelconque peut explorer ce répértoire et donc a accès au fichier exo2.sh; pour l'executer uniquement.
+
+Question 3 : Un utilisateur quelconque peut-il afficher le contenu du répertoire /home/luke/etudes ?
+
+Comme précédement décrit : 
+Si l'on observer l'arborescence du repertoire courant, on s'aperçoit que : 
+le repertoire parent a pour droits d'acces drwx--x--x. 
+Et le repertoire courant : drwx--xr-x.  
+le dernier "x" en partant de la gauche (des deux repertoires, courrant et parent) nous confirme que l'utilisateur quelconque peut explorer ce répértoire, et donc en afficher le contenu.
+
+
+Question 4 : Un utilisateur quelconque peut-il supprimer un fichier dans le répertoire examens ?
+
+Les droits d'accès au répertoire examens sont les suivants drwxr-x--x.
+Le dernier triplet en partant de la gauche nous indique les droits de permission pour l'utilisateur quelconque.
+Or ce triplet comprorte uniquement le droit d'explorer ce repertoire ('x').
+Par conséquence, l'utilisateur quelconque ne pourra pas supprimer de fichier dans ce répértoire (il lui aurait fallut le droit en écriture pour ce faire 'w').
+
+Question 5 : Que faire pour qu’un utilisateur quelconque puisse créer ou copier un fichier dans le
+répertoire examens et que seul l’utilisateur luke puisse afficher le contenu du répertoire ? Quelles sont
+les commandes à faire ?
+
+Pour cela on doit octroyer à l'utilisateur quelconque les droits d'ecriture au repertoire examens. 
+Afin que seul l'utilisateur luke puisse en afficher le contenu, on devra impérativement supprimer aux autres utilisateus le droit d'exploration.
+Ces deux opération peuvent s'effectuer en une seule commande :
+
+chmod 402 examens
+
+chmod : commande permettant de modifier les droits d'accès (on part du principe que celui qui l'execute est propriétaire, sinon on devra utiliser le super utilisateur pour executer cette commande)
+4 : droit de lecture uniquement, octroyé à l'utilisateur propriétaire à savoir luke. Il ne pourra donc pas explorer (pas de commande "cd examens" possible mais juste "ls") mais juste en afficher le contenu 
+0 : aucun droit pour le groupe propriétaire (cela n'est pas précisé dans la consigne explicitement)
+2 : droit d'ecriture pour l'utilisateur quelconque.
+
+le repertoire examens, après une telle commande aura pour permission : dr--r---w- 
+
+
+Question 6 : Que fait la commande chmod a-x examens/* ?
+
+Cette commande aura pour effet d'ajouter la permission d'execution/exploration à l'ensemble des fichiers et sous repertoires contenus dans le répertoire examens
+à tous les utilisateur (a = all +x = executions pour les fichiers et exploration pour les repertoires). 
+examens/* : l'étoile (wildcard), indique l'application de la commande à "tout" ce que contient ce repertoire (fichiers, repertoires, liens) 
+
+
