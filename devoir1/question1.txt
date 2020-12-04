@@ -33,6 +33,7 @@ grep / : commande effectuant une recherche texte d'expression reguliere et renvo
 grep : a nouveau, on va rechercher selon la sotrie de la commande précédente (le grep précédent)
 '\.tex$' : expression reguliere qui recherche toutes les occurence '.tex' (l'antislash echape le point "." qui est un caractere special en expression reguliere) qui finissent un mot (ici les noms des fichiers). le $ indique la fin du mot donc on admet que les lettres précédentes représente l'extension du fichier.
 
+A la place de "ls -p | grep -v / " on aurait pu utiliser "find" mais on aurait du ajouter le flax maxdepth 1 afin d'eviter une recherche recursive. Aussi on aurait du utiliser le flag -regex pour y passer une expression reguliere. Une combinaison de "grep" (dont les expressions regulières sont à la base de sa conception) et "ls" presente l'avantage d'utiliser des commande plus ciblées et plus performantes que find.
 
 Question 4 : Donner une commande qui affiche le nom et le numéro de tous les groupes définis dans le fichier /etc/group 
 
@@ -80,4 +81,14 @@ find : commande de recherche
 2> erreurs : redirige le flux d'erreur vers un fichier nommé "erreur"
 
 
-Question 8 : Donner une commande qui affiche les dix premiers noms de fichiers contenu dans le fichier fichProprio trié par ordre alphabétique inverse. Ces dix noms sont en fait les dix derniers noms du fichier origine mais triés par ordre inverse !
+Question 8 : Donner une commande qui affiche les dix premiers noms de fichiers contenu dans le fichier fichProprio trié par ordre alphabétique inverse.
+
+head -n10 fichProprio | sort -r   
+
+head -n10 : commande permettant de selectionner la "tete" a savoir le debut de l'entrée standard (stdin). Si le chemin d'un fichier lui est passé en argument, celui ci devient le stdin et la commande head lui est donc appliquée.
+            l'option '-n10' comptent les 10 premières lignes. Or comme la commande "find" précédente nous a crée un fichier comptenant tous les noms de fichiers avec un seul fichier par ligne, selectionner les 10 premieres lignes revient donc à selectionner les 10 premiers fichiers
+fichProprio : nom du fichier que l'on fait passer en entrée standard de la commande head
+| : pipe de redirection de la sortie standard de head en tant qu'entrée standard de la commande suivante
+sort : commande permettant d'ordonner l'entrée standard selon certains critère, par défaut il s'agit de l'order alphabétique pour les lettres et numérique pour les chiffres
+-r: flag de la commande sort qui permet d'inverser l'ordre (donc ordre alphabétique inverse).
+
