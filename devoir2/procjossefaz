@@ -1,0 +1,56 @@
+jossefaz 2081 00:07:50 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verbose 3 01/04/2021
+jossefaz 2389 00:00:00 /usr/libexec/gnome-session-binary --systemd --systemd --session=pop 01/04/2021
+jossefaz 26496 00:00:00 zsh 01/04/2021
+jossefaz 31157 00:11:00 /usr/bin/python3 /home/jossefaz/.local/bin/bpytop 01/04/2021
+jossefaz 41741 00:00:00 docker-compose up --build 01/04/2021
+jossefaz 41742 00:00:25 docker-compose up --build 01/04/2021
+jossefaz 53528 00:00:05 zsh 01/04/2021
+jossefaz 112847 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 112852 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 112858 00:00:00 sleep 3 01/04/2021
+jossefaz 113757 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 113760 00:00:00 ps -ao user,pid,cputime,command 01/04/2021
+jossefaz 113761 00:00:00 grep ^jossefaz 01/04/2021
+jossefaz 113762 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 2081 00:07:55 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verbose 3 01/04/2021
+jossefaz 2389 00:00:00 /usr/libexec/gnome-session-binary --systemd --systemd --session=pop 01/04/2021
+jossefaz 26496 00:00:00 zsh 01/04/2021
+jossefaz 31157 00:11:27 /usr/bin/python3 /home/jossefaz/.local/bin/bpytop 01/04/2021
+jossefaz 41741 00:00:00 docker-compose up --build 01/04/2021
+jossefaz 41742 00:00:26 docker-compose up --build 01/04/2021
+jossefaz 53528 00:00:05 zsh 01/04/2021
+jossefaz 112847 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 112852 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 112858 00:00:00 sleep 3 01/04/2021
+jossefaz 116663 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 116666 00:00:00 ps -ao user,pid,cputime,command 01/04/2021
+jossefaz 116667 00:00:00 grep ^jossefaz 01/04/2021
+jossefaz 116668 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 2081 00:07:59 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verbose 3 01/04/2021
+jossefaz 2389 00:00:00 /usr/libexec/gnome-session-binary --systemd --systemd --session=pop 01/04/2021
+jossefaz 26496 00:00:00 zsh 01/04/2021
+jossefaz 31157 00:11:35 /usr/bin/python3 /home/jossefaz/.local/bin/bpytop 01/04/2021
+jossefaz 41741 00:00:00 docker-compose up --build 01/04/2021
+jossefaz 41742 00:00:26 docker-compose up --build 01/04/2021
+jossefaz 53528 00:00:05 zsh 01/04/2021
+jossefaz 112847 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 112852 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 112858 00:00:00 sleep 3 01/04/2021
+jossefaz 117597 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 117600 00:00:00 ps -ao user,pid,cputime,command 01/04/2021
+jossefaz 117601 00:00:00 grep ^jossefaz 01/04/2021
+jossefaz 117602 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 2081 00:08:10 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verbose 3 01/04/2021
+jossefaz 2389 00:00:00 /usr/libexec/gnome-session-binary --systemd --systemd --session=pop 01/04/2021
+jossefaz 26496 00:00:00 zsh 01/04/2021
+jossefaz 31157 00:12:10 /usr/bin/python3 /home/jossefaz/.local/bin/bpytop 01/04/2021
+jossefaz 41741 00:00:00 docker-compose up --build 01/04/2021
+jossefaz 41742 00:00:28 docker-compose up --build 01/04/2021
+jossefaz 53528 00:00:05 zsh 01/04/2021
+jossefaz 112847 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 112852 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 112858 00:00:00 sleep 3 01/04/2021
+jossefaz 121129 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021
+jossefaz 121132 00:00:00 ps -ao user,pid,cputime,command 01/04/2021
+jossefaz 121133 00:00:00 grep ^jossefaz 01/04/2021
+jossefaz 121134 00:00:00 /bin/bash ./ex2.sh jossefaz 01/04/2021

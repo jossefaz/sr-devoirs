@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # On verifie qu'un seul nom de login a bien été passé en parametre
-if [[ "${#}" -gt 1 ]]
+if [[ "${#}" -gt 1 ]] || [[ "${#}" -eq 0 ]]
 then
-	echo "Ce script ne prend en compte qu'un seul nom de login !"
+	echo "Usage : USER"
+    echo "Vous devez rentrer un (et un seul!) nom d'utilisateur valide"
     exit 1
+fi
 fi
 
 LOGIN=${1}
@@ -31,12 +33,13 @@ PR_GR_NAME=$(grep "${PR_GR_ID}" </etc/group | cut -d: -f 1)
 # Recuperer les donnes du groupe en fonction de l'idet en extraire les noms des membres du groupe
 PR_GR_MEMBERS=$(grep "${PR_GR_ID}" </etc/group | cut -d: -f 4)
 
-# Si l'utilisateur est l'unique membre de son groupe principal
-
+# Si l'utilisateur est l'unique membre de son groupe principal (si la taille de la liste des membres est egale a 1)
 if [[ ${#PR_GR_MEMBERS[@]} -eq 1 ]]
 then
+    #afficher que l'utilisateur est l'unique membre se son group principal
     echo "L'utilisateur ${LOGIN} est l'unique membre du groupe principal ${PR_GR_NAME} "
 else 
+    # afficher la liste des membres
     echo "Les membres du groupe ${PR_GR_NAME} sont : ${PR_GR_MEMBERS}"
 fi
 
